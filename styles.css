@@ -65,7 +65,262 @@ table {
 
 /* GLOBAL STYLES (MOBILE FIRST (SMALL) */
 
+header {
+    background-color: var(--black);
+    border-bottom: 4px solid var(--blue);
+    padding: 1rem 0;
+}
+
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header h1 {
+    color: var(--blue);
+    position: relative;
+    font-weight: bold;
+    font-size: 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    padding-left: 5rem;
+}
+
+nav {
+    position: relative;
+}
+
+nav h2 {
+    position: absolute;
+    visibility:hidden;
+    height:1px;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+header nav label {
+    cursor: pointer;
+    display: inline-block;
+    padding: 1rem;
+    user-select: none;
+}
+
+header nav label span,
+header nav label span::before,
+header nav label span::after {
+    content: "";
+    display: block;
+    height: .25rem;
+    width: 2rem;
+    background: var(--white);
+    position: relative;
+    transition: all .2s ease-out;
+}
+
+header nav label span::before { 
+    position: absolute; 
+    top: -.6rem; 
+}
+
+header nav label span::after  { 
+    position: absolute; 
+    top: .6rem; 
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0; padding: 0;
+    text-align: center;
+    max-height: 0;
+    overflow: hidden;
+    background: var(--black);
+    transition: max-height .3s ease-in;
+}
+
+header nav li a {
+    display: block;
+    color: var(--blue);
+    padding: .75rem 0;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+#menu-toggle:checked ~ label span { 
+    background: transparent; 
+}
+
+#menu-toggle:checked ~ label span::before { 
+    transform: rotate(45deg); top: 0; 
+}
+
+#menu-toggle:checked ~ label span::after  { 
+    transform: rotate(-45deg); top: 0; 
+}
+
+#menu-toggle:checked ~ ul { 
+    max-height: 12rem; 
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 1.25rem;
+    margin-top: 1rem;
+    background: var(--blue);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: var(--white);
+    color: var(--blue);
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 1.50rem;
+    color: var(--white);
+    margin: 1rem 0;
+}
+
+#about h2 {
+    color: var(--black);
+}
+
+#services h2 {
+    color: var(--black);
+}
+
+#services .service-section {
+    border: 2px solid var(--blue);
+    background: var(--blue);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 1rem 0;
+}
+
+#services h3 {
+    color: var(--white);
+    font-weight: bold;
+    padding: 1rem;
+}
+
+#services p {
+    color: var(--white);
+}
+
+#results h2, h3 {
+    padding: 1rem;
+}
+
+#results p {
+    padding-bottom: 1rem;
+}
+
+#results {
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 1rem;
+}
+
+#results table {
+    background-color: var(--black);
+    width: 100%;
+}
+
+#results th, #results td {
+    padding: 1rem;
+    text-align: center;
+    border-left: 1px solid var(--charcoal);
+    border-bottom: 1px solid var(--charcoal);
+}
+
+#results tbody tr:nth-child(3) {
+    background: var(--charcoal);
+}
+
+#results tbody tr:nth-child(5) {
+    background: var(--charcoal);
+}
+
+#results th {
+    font-weight: bold;
+}
+
+h3 {
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+#contact {
+    color: var(--white);
+    background-color: var(--black);
+    padding: 1rem;
+}
+
+#contact p {
+    margin-bottom: 1rem;
+}
+
+#contact form {
+    display: grid;
+    gap: 1rem;
+}
+
+#contact label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: bold;
+}
+
+#contact input, #contact textarea {
+    width: 95%;
+    border: 2px solid var(--blue);
+    padding: 0.75rem;
+}
+
+#contact button {
+    width: 100%;
+    color: var(--white);
+    background-color: var(--blue);
+    border: 1px solid var(--blue);
+    border-radius: 10px;
+    padding: 1rem;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+footer {
+    background-color: var(--black);
+    color: var(--white);
+    padding: 1rem;
+    text-align: center;
+}
+
+footer p {
+    margin: 0.25rem 0;
+}
+
+footer a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+footer a[href^="mailto:"]:link {
+    color: var(--blue);
+    text-decoration: underline;
+}
+
 /* MIN-WIDTH OF THE PAGE SHOULD NOT GO BELOW 400PX */
+body {
+    min-width: 400px;
+    font-family: var(--font);
+}
 
 /* ADD A DIV WITH THE CLASS OF CONTAINER TO EVERY CONTENT CONTAINER THIS IS ALLOW THE BASE ELEMENTS TO BE 100% WIDTH, BUT CONSTRAIN THE ACTUAL CONTENT TO 90% */
 .container {
@@ -75,7 +330,7 @@ table {
 }
 
 /* ADD TO "INNOVATION & INVESTMENT SECTION (Photo by Kevin Matos on Unsplash) */
- {
+#innovation {
     background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('images/vanguard-hero.jpg') no-repeat center center/cover;
     height: 80vh;
     display: grid;
@@ -83,17 +338,35 @@ table {
     text-align: center;
     padding: 1rem;
     overflow: hidden;
+    color: var(--white);
+    position: relative;
+}
+
+#innovation::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 90%;
+    height: 45%;
+    border-radius: 12px;
+    background: transparent;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+#innovation > * { 
+    position: relative; 
 }
 
 /* ADD FLOATING SVG LOGO BEFORE THE H1 */
- {
+header h1::before {
     content: "";
-
+    position: absolute;
     left:-.5rem;
     width: 3.75rem;
     height: 3.75rem;
     background: url('images/vanguard-logo.svg') no-repeat center/contain;
-
 }
 /* THIS ONE IS DONE FOR YOU */
 #bar-chart {
@@ -114,7 +387,7 @@ table {
     background: var(--charcoal);
     border-radius: 10px;
     position: relative;
-    transition: ;
+    transition: height 0.3s ease;
     height: 0;
 }
 /* THIS ONE IS DONE FOR YOU */
@@ -143,7 +416,7 @@ table {
 
 
 /* MEDIA QUERIES (MEDIUM) */ 
-
+@media (min-width: 800px) {
     #results {
         grid-template-columns: 1fr 1fr;
     }
@@ -157,6 +430,37 @@ table {
     .bar-chart {
         width: 50%;
     }
+    header nav ul {
+        display: grid;
+        grid-auto-flow: column;
+        gap: 1.5rem;
+        max-height: none; 
+        overflow: visible; 
+        background: transparent;
+  }
+    header nav label { 
+        display: none; 
+    }
+
+    #services .container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem 1.25rem;
+        padding-bottom: 1rem;
+}
+
+    #services h2 {
+        grid-column: 1 / -1; 
+    }
+    #services .service-section {
+        margin: 0;
+    }
+    
+}
+
 
 
 /* MEDIA QUERIES (LARGE) */
+@media (min-width: 1024px) {
+
+}
