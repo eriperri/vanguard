@@ -67,7 +67,9 @@ table {
 
 header {
     background-color: var(--black);
-    border-bottom: 4px solid var(--blue);
+    z-index: 10;
+    position: relative;
+    box-shadow: 0 14px 24px -3px var(--blue);
     padding: 1rem 0;
 }
 
@@ -93,8 +95,8 @@ nav {
 
 nav h2 {
     position: absolute;
-    visibility:hidden;
-    height:1px;
+    visibility: hidden;
+    height: 1px;
 }
 
 #menu-toggle {
@@ -108,9 +110,7 @@ header nav label {
     user-select: none;
 }
 
-header nav label span,
-header nav label span::before,
-header nav label span::after {
+header nav label span, header nav label span::before, header nav label span::after {
     content: "";
     display: block;
     height: .25rem;
@@ -137,15 +137,20 @@ header nav ul {
     max-height: 0;
     overflow: hidden;
     background: var(--black);
-    transition: max-height .3s ease-in;
 }
 
 header nav li a {
     display: block;
     color: var(--blue);
-    padding: .75rem 0;
+    padding: 1rem;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: bold;
+    transition: background-color .3s ease-in;
+}
+
+nav a:hover, nav input:hover {
+    background-color: var(--blue);
+    color: var(--black);
 }
 
 #menu-toggle:checked ~ label span { 
@@ -153,11 +158,13 @@ header nav li a {
 }
 
 #menu-toggle:checked ~ label span::before { 
-    transform: rotate(45deg); top: 0; 
+    transform: rotate(45deg); 
+    top: 0; 
 }
 
 #menu-toggle:checked ~ label span::after  { 
-    transform: rotate(-45deg); top: 0; 
+    transform: rotate(-45deg); 
+    top: 0; 
 }
 
 #menu-toggle:checked ~ ul { 
@@ -173,11 +180,13 @@ header nav li a {
     text-decoration: none;
     border-radius: 12px;
     font-weight: bold;
+    transition: all 100ms ease-in-out;
 }
 
 .btn:hover {
-    background-color: var(--white);
-    color: var(--blue);
+    background-color: var(--red);
+    border-color: var(--red);
+    transform: scale(1.05);
 }
 
 h2 {
@@ -201,6 +210,11 @@ h2 {
     border-radius: 12px;
     padding: 2rem;
     margin: 1rem 0;
+    transition: transform .2s ease
+}
+
+#services .service-section:hover {
+    transform: translateY(-6px);
 }
 
 #services h3 {
@@ -293,6 +307,13 @@ h3 {
     font-weight: bold;
     font-size: 1rem;
     cursor: pointer;
+    transition: transform .2s ease;
+}
+
+#contact button:hover {
+    background-color: var(--red);
+    border-color: var(--red);
+    transform: scale(1.05);
 }
 
 footer {
@@ -357,6 +378,27 @@ body {
 
 #innovation > * { 
     position: relative; 
+}
+
+@keyframes fadeFromUp {
+    from { 
+        opacity: 0; 
+        translate: 0 -16px; 
+    }
+    to   { 
+        opacity: 1; 
+        translate: 0 0; 
+    }
+}
+
+#innovation h2, #innovation .btn {
+    opacity: 0;
+    animation: fadeFromUp .6s ease-out .4s forwards;
+}
+
+h2, h3 {
+    opacity: 0;
+    animation: fadeFromUp .6s ease-out .2s forwards;
 }
 
 /* ADD FLOATING SVG LOGO BEFORE THE H1 */
@@ -437,7 +479,7 @@ header h1::before {
         max-height: none; 
         overflow: visible; 
         background: transparent;
-  }
+    }
     header nav label { 
         display: none; 
     }
@@ -447,7 +489,7 @@ header h1::before {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem 1.25rem;
         padding-bottom: 1rem;
-}
+    }
 
     #services h2 {
         grid-column: 1 / -1; 
@@ -456,11 +498,52 @@ header h1::before {
         margin: 0;
     }
     
+    #results .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem 2rem;
+        align-items: start;
+    }
+
+    #results h2, #results p { 
+        grid-column: 1 / -1; 
+    }
+
+    #results h3:first-of-type { 
+        grid-column: 1; 
+        grid-row: 3; 
+    }
+
+    #results table { 
+        grid-column: 1; 
+        grid-row: 4; 
+    }
+
+    
+    #results h3:nth-of-type(2) { 
+        grid-column: 2; 
+        grid-row: 3; 
+    }
+    #bar-chart { 
+        grid-column: 2; 
+        grid-row: 4; 
+        align-self: start; 
+        max-width: 100%; 
+    }
+
 }
 
 
 
 /* MEDIA QUERIES (LARGE) */
 @media (min-width: 1024px) {
+    #services .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 
+    #contact form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
 }
